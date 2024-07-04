@@ -8,8 +8,10 @@ let x = 1034184; // Initial value of x, you can change this as needed
 const allowedOrigins = [
   'https://hamsterchain.onrender.com',
   'https://www.hamsterchain.org/',
+  'https://www.hamsterchain.org',
   'https://hamster-ceo-v2.webflow.io',
   'https://hamsterchain.org',
+  'https://hamsterchain.org/',
 ];
 
 const corsOptions = {
