@@ -7,9 +7,9 @@ let x = 1034184; // Initial value of x, you can change this as needed
 // CORS configuration to allow requests only from specific origins
 const allowedOrigins = [
   'https://hamsterchain.onrender.com',
-  'https://hamsterchain.org',
   'https://www.hamsterchain.org/',
-  'https://hamster-ceo-v2.webflow.io'
+  'https://hamster-ceo-v2.webflow.io',
+  'https://hamsterchain.org',
 ];
 
 const corsOptions = {
