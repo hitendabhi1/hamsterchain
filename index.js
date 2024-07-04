@@ -4,10 +4,12 @@ const app = express();
 
 let x = 100; // Initial value of x, you can change this as needed
 
-// CORS configuration to allow requests only from hamsterchain.org
+// CORS configuration to allow requests only from specific origins
+const allowedOrigins = ['https://hamsterchain.onrender.com', 'https://hamsterchain.org'];
+
 const corsOptions = {
   origin: (origin, callback) => {
-    if (origin && origin.includes('hamsterchain.org')) {
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -60,7 +62,4 @@ app.get('/get-number', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+const PORT = process.env.P
