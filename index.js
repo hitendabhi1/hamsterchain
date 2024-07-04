@@ -12,23 +12,23 @@ const allowedOrigins = [
   'https://hamster-ceo-v2.webflow.io'
 ];
 
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     if (!origin) {
-//       // Allow requests with no origin (like mobile apps, curl requests, etc.)
-//       return callback(null, true);
-//     }
-//     if (allowedOrigins.some(allowedOrigin => origin.startsWith(allowedOrigin))) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   }
-// };
-
 const corsOptions = {
-  origin: '*',
+  origin: (origin, callback) => {
+    if (!origin) {
+      // Allow requests with no origin (like mobile apps, curl requests, etc.)
+      return callback(null, true);
+    }
+    if (allowedOrigins.some(allowedOrigin => origin.startsWith(allowedOrigin))) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 };
+
+// const corsOptions = {
+//   origin: '*',
+// };
 
 app.use(cors(corsOptions));
 app.use(express.json());
