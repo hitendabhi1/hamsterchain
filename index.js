@@ -61,5 +61,4 @@ app.get('/get-number', (req, res) => {
   res.json({ number: x });
 });
 
-// Start the server
-const PORT = process.env.P
+const PORT = process.env.PORT || 3000;
