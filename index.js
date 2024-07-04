@@ -4,17 +4,18 @@ const app = express();
 
 let x = 100; // Initial value of x, you can change this as needed
 
-// // Middleware to allow requests only from hamsterchain.org
-// app.use((req, res, next) => {
-//   const allowedOrigin = 'hamsterchain.org';
-//   const origin = req.get('origin');
+// CORS configuration to allow requests only from hamsterchain.org
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (origin && origin.includes('hamsterchain.org')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
 
-//   if (origin && origin.includes(allowedOrigin)) {
-//     next();
-//   } else {
-//     res.status(403).send('Access forbidden');
-//   }
-// });
+app.use(cors(corsOptions));
 
 // Function to increase x by 8 to 12% every day
 const increaseXDaily = () => {
