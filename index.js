@@ -5,7 +5,7 @@ const app = express();
 let x = 1034184; // Initial value of x, you can change this as needed
 
 // CORS configuration to allow requests only from specific origins
-const allowedOrigins = ['https://hamsterchain.onrender.com', 'https://hamsterchain.org', 'http://localhost:3001'];
+const allowedOrigins = ['https://hamsterchain.onrender.com', 'https://hamsterchain.org', 'http://localhost:3001', 'https://hamster-ceo-v2.webflow.io/'];
 
 const corsOptions = {
   origin: (origin, callback) => {
