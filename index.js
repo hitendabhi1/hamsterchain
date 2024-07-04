@@ -4,20 +4,24 @@ const app = express();
 
 let x = 100; // Initial value of x, you can change this as needed
 
-// CORS configuration to allow requests only from specific origins
-const allowedOrigins = ['https://hamsterchain.onrender.com', 'https://hamsterchain.org'];
+// // CORS configuration to allow requests only from specific origins
+// const allowedOrigins = ['https://hamsterchain.onrender.com', 'https://hamsterchain.org', 'http://localhost:3001/'];
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-};
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   }
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
+app.use(express.json());
+
+const port = 3001;
 
 // Function to increase x by 8 to 12% every day
 const increaseXDaily = () => {
@@ -61,4 +65,17 @@ app.get('/get-number', (req, res) => {
   res.json({ number: x });
 });
 
-const PORT = process.env.PORT || 3000;
+app.listen(process.env.PORT || 3001, function () {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
+
+  const port = this.address().port;
+  const mode = app.settings.env;
+  const host = `http://localhost:${port}`; // Replace with your host if not localhost
+
+  // Logging the full URL
+  console.log(`Express server listening on: ${host}`);
+});
