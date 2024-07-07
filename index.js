@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-let x = 1034184; // Initial value of x, you can change this as needed
+let x = 2064184; // Initial value of x, you can change this as needed
 
 // CORS configuration to allow requests only from specific origins
 const allowedOrigins = [
